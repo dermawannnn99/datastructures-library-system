@@ -6,11 +6,7 @@
 #include <queue>
 #include <cstdlib>
 
-#ifdef _WIN32
-    #define CLEAR "cls"
-#else
-    #define CLEAR "clear"
-#endif
+#define CLEAR "cls"
 
 using namespace std;
 
@@ -102,12 +98,12 @@ public:
         } else if (id_buku > node->ptr_buku->id_buku) {
             node->kanan = hapus_node_pohon(node->kanan, id_buku);
         } else {
-            // kasus 1: node tanpa anak
+            // kasus 1: jika node tanpa anak
             if (!node->kiri && !node->kanan) {
                 delete node;
                 return nullptr;
             }
-            // kasus 2: node dengan satu anak
+            // kasus 2: jika node dengan satu anak
             if (!node->kiri) {
                 node_pohon* temp = node->kanan;
                 delete node;
@@ -118,7 +114,7 @@ public:
                 delete node;
                 return temp;
             }
-            // kasus 3: node dengan dua anak
+            // kasus 3: jika node dengan dua anak
             node_pohon* pengganti = node->kanan;
             while (pengganti->kiri) pengganti = pengganti->kiri;
             node->ptr_buku = pengganti->ptr_buku;
@@ -190,7 +186,7 @@ public:
             cout << "====================================" << endl;
             return;
         }
-        // hapus dari pohon
+        // hapus dari tree
         akar_pohon = hapus_node_pohon(akar_pohon, id_buku);
         // hapus dari array
         for (int i = 0; i < jumlah_buku; i++) {
@@ -448,7 +444,7 @@ public:
     }
 };
 
-// tampilkan layar selamat datang
+// pemanisss
 void tampilkan_selamat_datang() {
     system(CLEAR);
     cout << "==========================================" << endl;
@@ -489,7 +485,7 @@ int main() {
     int pilihan, id_buku, nomor_rak, id_anggota;
     string judul, penulis, nama;
 
-    // tampilkan layar selamat datang
+    // panggil func pemanis
     tampilkan_selamat_datang();
 
     while (true) {
